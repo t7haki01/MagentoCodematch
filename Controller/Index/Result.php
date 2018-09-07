@@ -10,28 +10,17 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Result extends Action
 {
-    /** @var PageFactory $resultPageFactory */
-    protected $resultPageFactory;
 
-    /**
-     * Result constructor.
-     * @param Context $context
-     * @param PageFactory $pageFactory
-     */
     public function __construct(Context $context, PageFactory $pageFactory)
     {
         $this->resultPageFactory = $pageFactory;
         parent::__construct($context);
     }
 
-    /**
-     * The controller action
-     *
-     * @return \Magento\Framework\View\Result\Page
-     */
+
     public function execute()
     {
-        $number = $this->getRequest()->getParam('number');
+        $answer = $this->getRequest()/*->getParam('question');*/;
 
         $resultPage = $this->resultPageFactory->create();
 
@@ -40,12 +29,9 @@ class Result extends Action
             'Magento\Framework\View\Element\Messages',
             'answer'
         );
-        if (is_numeric($number)) {
-            $messageBlock->addSuccess($number . ' times 2 is ' . ($number * 2));
-        }else{
-            $messageBlock->addError('You didn\'t enter a number!');
-        }
-
+        
+        $messageBlock->addSuccess($answer);
+        
         $resultPage->getLayout()->setChild(
             'content',
             $messageBlock->getNameInLayout(),

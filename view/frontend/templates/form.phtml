@@ -1,6 +1,6 @@
 
 
-<form class="form" action="result" method="post">
+<form class="form" action="<?php echo $block->getFormAction() ?>" method="post">
 
 <fieldset class="fieldset">
     <legend class="legend"><span>Survey</span></legend><br>
@@ -21,8 +21,8 @@
         </label>
 
         <div class="control">
-            <input type="text" id="question1"
-                   name="question1"
+            <input type="text" id="question2"
+                   name="question2"
                    class="input-text">
         </div>
     </div>

@@ -18,7 +18,7 @@ interface AnswerInterface
      *
      * @return int|null
      */
-    public function getAnswerId();
+    public function getId();
 
     /**
      * Get question1
@@ -41,7 +41,7 @@ interface AnswerInterface
      * @param int $id
      * @return $this
      */
-    public function setAnswerId($id);
+    public function setId($id);
 
     /**
      * Set question1
