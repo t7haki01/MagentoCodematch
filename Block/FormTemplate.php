@@ -39,7 +39,7 @@ class FormTemplate extends Template
     public function getAnswerUrl(
         Post $post
     ) {
-        return '/surveypage/result/id/' . $post->getId();
+        return '/survey/index/result/' . $post->getId();
     }
 
 }

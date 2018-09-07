@@ -10,7 +10,7 @@ class Answer extends AbstractDb
      * Post Abstract Resource Constructor
      * @return void
      */
-    protected function __construct()
+    protected function _construct()
     {
         $this->_init('survey_answer', 'answer_id');
     }

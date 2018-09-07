@@ -3,4 +3,10 @@
     <head>
         <title>Result</title>
     </head>
+    <body>
+       <referenceContainer name="content">
+           <block name="result" class="Magento\Framework\View\Element\Template" template="Survey_SurveyPage::result.phtml"/>
+<!--From here template name should match the filename in the template folder-->
+       </referenceContainer>
+   </body>
 </page>
