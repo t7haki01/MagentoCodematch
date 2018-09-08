@@ -4,31 +4,31 @@ namespace Survey\SurveyPage\Block;
 
 use \Magento\Framework\View\Element\Template;
 use \Magento\Framework\View\Element\Template\Context;
-use \Survey\SurveyPage\Model\ResourceModel\Answer\Collection as PostCollection;
-use \Survey\SurveyPage\Model\ResourceModel\Answer\CollectionFactory as PostCollectionFactory;
+use \Survey\SurveyPage\Model\ResourceModel\Answer\Collection as AnswerCollection;
+use \Survey\SurveyPage\Model\ResourceModel\Answer\CollectionFactory as AnswerCollectionFactory;
 use \Survey\SurveyPage\Model\Answer;
 
 class FormTemplate extends Template
 {
 
-    protected $_postCollectionFactory = null;
+    protected $_answerCollectionFactory = null;
 
     public function __construct(
         Context $context,
-        PostCollectionFactory $postCollectionFactory,
+        AnswerCollectionFactory $answerCollectionFactory,
         array $data = []
     ) {
-        $this->_postCollectionFactory = $postCollectionFactory;
+        $this->_answerCollectionFactory = $answerCollectionFactory;
         parent::__construct($context, $data);
     }
 
   
     public function getAnswers()
     {
-        /** @var PostCollection $postCollection */
-        $postCollection = $this->_postCollectionFactory->create();
-        $postCollection->addFieldToSelect('*')->load();
-        return $postCollection->getItems();
+
+        $answerCollection = $this->_answerCollectionFactory->create();
+        $answerCollection->addFieldToSelect('*')->load();
+        return $answerCollection->getItems();
     }
 
     /**
@@ -37,9 +37,9 @@ class FormTemplate extends Template
      * @return string
      */
     public function getAnswerUrl(
-        Post $post
+        Answer $answer
     ) {
-        return '/survey/index/result/' . $post->getId();
+        return '/survey/index/result/' . $answer->getId();
     }
 
 }
