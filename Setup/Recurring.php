@@ -51,6 +51,20 @@ if ($connection->isTableExists(self::ANSWER_TABLE)) {
                     null,
                     ['nullable' => false],
                     'Question2'
+                )
+                ->addColumn(
+                    'question3',
+                    Table::TYPE_TEXT,
+                    null,
+                    ['nullable' => false],
+                    'Question3'
+                )
+                ->addColumn(
+                    'product',
+                    Table::TYPE_TEXT,
+                    null,
+                    ['nullable' => false],
+                    'Product'
                 );
                    $connection->createTable($surveyTable);
             

@@ -10,6 +10,8 @@ interface AnswerInterface
     const ANSWER_ID             = 'answer_id';
     const QUESTION1             = 'question1';
     const QUESTION2             = 'question2';
+    const QUESTION3             = 'question3';
+    const PRODUCT               = 'product';
     /**#@-*/
 
 
@@ -33,6 +35,10 @@ interface AnswerInterface
      * @return string|null
      */
     public function getQuestion2();
+
+    public function getQuestion3();
+    
+    public function getProduct();
 
 
     /**
@@ -58,6 +64,10 @@ interface AnswerInterface
      * @return $this
      */
     public function setQuestion2($question2);
+
+    public function setQuestion3($question3);
+
+    public function setProduct($product);
 
     
 }

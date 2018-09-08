@@ -25,7 +25,6 @@ class FormTemplate extends Template
   
     public function getAnswers()
     {
-
         $answerCollection = $this->_answerCollectionFactory->create();
         $answerCollection->addFieldToSelect('*')->load();
         return $answerCollection->getItems();

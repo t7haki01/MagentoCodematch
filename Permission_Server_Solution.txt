@@ -7,3 +7,10 @@ chmod 775 -R /var/www/html/magento2/
 ./bin/magento setup:upgrade
 rm -rf var/cache/* var/page_cache/* generated/*
 buutti@buutti-ThinkPad-T430:/var/www/html/magento2$  -
+
+
+php bin/magento cache:flush
+php bin/magento cache:clean
+php bin/magento setup:upgrade
+bin/magento setup:di:compile
+From magento root directory: chmod -R 777 var/*

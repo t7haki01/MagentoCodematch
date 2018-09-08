@@ -40,6 +40,16 @@ class Answer extends AbstractModel implements AnswerInterface, IdentityInterface
         return $this->getData(self::QUESTION2);
     }
 
+    public function getQuestion3()
+    {
+        return $this->getData(self::QUESTION3);
+    }
+
+    public function getProduct()
+    {
+        return $this->getData(self::PRODUCT);
+    }
+
 
 
     public function setId($AnswerId)
@@ -57,6 +67,16 @@ class Answer extends AbstractModel implements AnswerInterface, IdentityInterface
     public function setQuestion2($question2)
     {
         return $this->setData(self::QUESTION2, $question2);
+    }
+
+    public function setQuestion3($question3)
+    {
+        return $this->setData(self::QUESTION3, $question3);
+    }
+
+    public function setProduct($product)
+    {
+        return $this->setData(self::PRODUCT, $product);
     }
 
    public function getIdentities()

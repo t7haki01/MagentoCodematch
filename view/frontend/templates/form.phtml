@@ -1,12 +1,14 @@
 
-
+<?php $msg;?>
 <form class="form" action="/magento/survey/index/result" method="post">
+<!--in the form tag action url could be differ because i'm testing in the xampp, uniserver and virtual server but
+every magento installation basic url was different so it can be defined depends on the basic magento url-->
 
 <fieldset class="fieldset">
     <legend class="legend"><span>Survey</span></legend><br>
     <div class="field required">
         <label for="question1" class="label">
-            Question1
+            Was our service satisfied?
         </label>
 
         <div class="control">
@@ -16,8 +18,8 @@
         </div>
     </div>
     <div class="field required">
-        <label for="question1" class="label">
-            Question2
+        <label for="question2" class="label">
+            Did you have problem with finding product?
         </label>
 
         <div class="control">
@@ -26,6 +28,29 @@
                    class="input-text">
         </div>
     </div>
+    <div class="field required">
+        <label for="question3" class="label">
+            Is there anything that we can make it better among our services?
+        </label>
+
+        <div class="control">
+            <input type="text" id="question3"
+                   name="question3"
+                   class="input-text">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="product" class="label">
+            What product was that looking for?
+        </label>
+
+        <div class="control">
+            <input type="text" id="product"
+                   name="product"
+                   class="input-text">
+        </div>
+    </div>
+    
 </fieldset>
 
 <div class="actions-toolbar">
