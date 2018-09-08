@@ -9,6 +9,8 @@ use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Result\PageFactory;
 use Survey\SurveyPage\Model\AnswerFactory;
 
+
+
 class Result extends Action
 {
 
@@ -24,24 +26,22 @@ class Result extends Action
 
     public function execute()
     {
-        $resultAnswer = $this->resultAnswerFactory->getQuestion1();
-
         $resultPage = $this->resultPageFactory->create();
-
-        /** @var Messages $messageBlock */
-        $messageBlock = $resultPage->getLayout()->createBlock(
-            'Magento\Framework\View\Element\Messages',
-            'answer'
-        );
+        // $resultAnswer = $this->resultAnswerFactory->getQuestion1();
+        // /** @var Messages $messageBlock */
+        // $messageBlock = $resultPage->getLayout()->createBlock(
+        //     'Magento\Framework\View\Element\Messages',
+        //     'answer'
+        // );
         
-        $messageBlock->addSuccess($answer);
+        // $messageBlock->addSuccess($answer);
         
-        $resultPage->getLayout()->setChild(
-            'content',
-            $messageBlock->getNameInLayout(),
-            'answer_alias'
-        );
+        // $resultPage->getLayout()->setChild(
+        //     'content',
+        //     $messageBlock->getNameInLayout(),
+        //     'answer_alias'
+        // );
 
-        return $resultPage.$resultAnswer;
+        // return $resultPage.$resultAnswer;
     }
 }
