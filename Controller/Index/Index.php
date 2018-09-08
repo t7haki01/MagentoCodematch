@@ -27,7 +27,6 @@ class Index extends Action
 
     $post = (array) $this->getRequest()->getPost();
 
-<<<<<<< HEAD
           if (!empty($post)) {
               // Retrieve your form data
               $question1   = $post['question1'];
@@ -42,22 +41,6 @@ class Index extends Action
 
               return $resultRedirect;
           }
-=======
-        if (!empty($post)) {
-            // Retrieve your form data
-            $question1   = $post['question1'];
-            $question2    = $post['question2'];
-
-            // Display the succes form validation message
-            $this->messageManager->addSuccessMessage('Thank you for the Survey');
-
-            // Redirect to your form page (or anywhere you want...)
-            $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-            $resultRedirect->setUrl('survey/index/result');
-
-            return $resultRedirect;
-        }
->>>>>>> origin/master
         $this->_view->loadLayout();
         $this->_view->renderLayout();
 
