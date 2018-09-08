@@ -1,0 +1,9 @@
+buutti@buutti-ThinkPad-T430:/var/www/html/magento2$ cat buildmagento.sh 
+#!/bin/bash
+
+chown -R buutti:www-data /var/www/html/magento2/
+chmod 775 -R /var/www/html/magento2/
+
+./bin/magento setup:upgrade
+rm -rf var/cache/* var/page_cache/* generated/*
+buutti@buutti-ThinkPad-T430:/var/www/html/magento2$  -
