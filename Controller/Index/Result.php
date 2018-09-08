@@ -7,18 +7,22 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Result\PageFactory;
+use \Magento\Framework\View\Result\Page;
 use Survey\SurveyPage\Model\AnswerFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\App\ObjectManager;
+use \Magento\Framework\Exception\LocalizedException;
+
 
 class Result extends Action
 {
+    protected $_resultPageFactory;
 
     public function __construct(Context $context, 
-        PageFactory $pageFactory,
+        PageFactory $resultPageFactory,
         AnswerFactory $answerFactory/*, ObjectManager $objectManager*/)
     {
-        $this->resultPageFactory = $pageFactory;
+        $this->_resultPageFactory = $resultPageFactory;
         $this->resultAnswerFactory = $answerFactory;
         // $this->_objectManager = $objectManager;
         parent::__construct($context);
@@ -27,24 +31,26 @@ class Result extends Action
 
     public function execute()
     {
-        // $resultAnswer = $this->resultAnswerFactory->getQuestion1();
+        $resultPage = $this->_resultPageFactory->create();
         $data = $this->getRequest()->getPost();
         
-        // $model = $objectManager->create('Survey\SurveyPage\Model\Answer');
-        $model = $this->resultAnswerFactory->create('Survey\SurveyPage\Model\Answer');
-        $model->setQuestion1($data['question1']);
 
-        $model->setData('question1', $data['question1']);  
+        $answer = $this->resultAnswerFactory->create();
+        $answer->setQuestion1($data['question1']);
+        $answer->setQuestion2($data['question2']);
+
+        // $answer->setData('question1', $data['question1']);  
 
         $msg =""; 
 
         if($data != ''){ 
-            $model->save(); 
-            $msg = 'saved successfully';
+            $answer->save(); 
+            $msg = 'saved successfully'.$answer->getQuestion1().$answer->getQuestion2();
         }else{ 
              $msg = 'not saved';  
         } 
-        echo $msg;
+        echo "<script>console.log('PHP: ".$msg."');</script>" ;
+        return $resultPage;
     }
 
 
