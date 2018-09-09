@@ -43,14 +43,23 @@ every magento installation basic url was different so it can be defined depends 
         <label for="product" class="label">
             What product was that looking for?
         </label>
-
         <div class="control">
-            <input type="text" id="product"
-                   name="product"
-                   class="input-text">
+                   <select name="product" id="product">
+                   <?php
+                        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+                        $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
+
+                        $collection = $productCollection->addAttributeToSelect('*')
+                                    ->load();
+
+                        foreach ($collection as $product){
+                            echo "<option value=\"".$product->getName()."\">".$product->getName()."</option>";
+                        }  
+                    ?>
+                   </select>
         </div>
     </div>
-    
 </fieldset>
 
 <div class="actions-toolbar">
@@ -62,4 +71,3 @@ every magento installation basic url was different so it can be defined depends 
 </div>
 
 </form>
-

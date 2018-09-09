@@ -11,52 +11,16 @@ use Magento\Framework\View\Element\Template\Context;
 
 class ListProduct extends Template
 {
-    private $productRepository;
-
-    private $searchCriteriaBuilder;
-
-    private $sortOrderBuilder;
+    protected $_productloader;  
 
     public function __construct(
-        ProductRepositoryInterface $productRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        SortOrderBuilder $sortOrderBuilder,
-        Context $context,
-        array $data = []
+        \Magento\Catalog\Model\ProductFactory $_productloader
     ) {
-        parent::__construct($context, $data);
-        $this->productRepository = $productRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->sortOrderBuilder = $sortOrderBuilder;
+        $this->_productloader = $_productloader;
     }
-
-    public function getProducts()
+    public function getProduct($id)
     {
-        // Filter products weighing 10kg or more
-        // $this->searchCriteriaBuilder
-        //     ->addFilter();
-
-        // Sort products heaviest to lightest
-        // $sortOrder = $this->sortOrderBuilder
-            // ->setField()
-            // ->setDirection(SortOrder::SORT_DESC)
-            // ->create();
-            // $this->searchCriteriaBuilder->addSortOrder($sortOrder);
-
-        
-        $this->searchCriteriaBuilder
-            ->setPageSize(5)
-            ->setCurrentPage(1);
-
-        // Create the SearchCriteria
-        $searchCriteria = $this->searchCriteriaBuilder->create();
-
-        // Load the products
-        $products = $this->productRepository
-            ->getList(/*$searchCriteria*/)
-            ->getItems();
-
-        return $products;
+        return $this->_productloader->create()->load($id);
     }
 }
 
