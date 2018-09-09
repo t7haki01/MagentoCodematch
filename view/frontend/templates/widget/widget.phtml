@@ -1,29 +1,41 @@
 <?php if($block->getData('widgettitle')): ?>
-	<h2 class='toptal-title'><?php echo $block->getData('widgettitle'); ?></h2>
+	<h2><?php echo $block->getData('widgettitle'); ?></h2>
 <?php endif; ?>
-<?php if($block->getData('widgetcontent')): ?>
-	<h2 class='toptal-content'><?php echo $block->getData('widgetcontent'); ?></h2>
-<?php endif; ?>
-
-
-<?php
-                   //Many says that using objectmanager could cause dependency issue
+<?php if($block->getData('widgetdescription')): ?>
+	<h3><?php echo $block->getData('widgetdescription');?></h3>
+	<?php 
+	//Many says that using objectmanager could cause dependency issue
                    //but it workds on me and seems easy if it made trouble i could take a look more
                    //for now running out of time so..
-                        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 
-                        $productCollection = $objectManager->create('Survey\SurveyPage\Model\ResourceModel\Answer\Collection');
+	$productCollection = $objectManager->create('Survey\SurveyPage\Model\ResourceModel\Answer\Collection');
 
-                        $collection = $productCollection;
-						echo "<table><tr><th>Was our service satisfied?</th>";
-						echo "<th>Did you have problem with finding product?</th>";
-						echo "<th>Is there anything that we can make it better among our services?</th>";
-						echo "<th>What product was that looking for?</th>";
-                        foreach ($collection as $product){
-							echo "<tr>";
-							echo "<td>".$product->getQuestion1()."</td>";
-							echo "<td>".$product->getQuestion2()."</td>";
-							echo "<td>".$product->getQuestion3()."</td>";
-							echo "<td>".$product->getProduct()."</td></tr>";
-                        }  
-                    ?>
+	$collection = $productCollection;
+	echo "<table><tr><th>Was our service satisfied?</th>";
+	echo "<th>Did you have problem with finding product?</th>";
+	echo "<th>Is there anything that we can make it better among our services?</th>";
+	echo "<th>What product was that looking for?</th>";
+	$count = $block->getData('product_count');
+	if($count==null){
+		foreach ($collection as $product){
+		echo "<tr>";
+		echo "<td>".$product->getQuestion1()."</td>";
+		echo "<td>".$product->getQuestion2()."</td>";
+		echo "<td>".$product->getQuestion3()."</td>";
+		echo "<td>".$product->getProduct()."</td></tr>";
+		}
+	}
+	else{
+		for($i=0; $i<$count;$i++)
+		echo "<tr>";
+		echo "<td>".$product->getQuestion1()."</td>";
+		echo "<td>".$product->getQuestion2()."</td>";
+		echo "<td>".$product->getQuestion3()."</td>";
+		echo "<td>".$product->getProduct()."</td></tr>";
+	}
+	echo "</table>";
+	?>
+<?php endif; ?>
+
+
