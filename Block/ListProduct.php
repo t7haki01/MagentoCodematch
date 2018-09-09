@@ -41,9 +41,9 @@ class ListProduct extends Template
             // ->setField()
             // ->setDirection(SortOrder::SORT_DESC)
             // ->create();
-        // $this->searchCriteriaBuilder->addSortOrder($sortOrder);
+            // $this->searchCriteriaBuilder->addSortOrder($sortOrder);
 
-        // Get the first 5 products
+        
         $this->searchCriteriaBuilder
             ->setPageSize(5)
             ->setCurrentPage(1);

@@ -7,7 +7,7 @@
 			<parameter name="title" sort_order="10" visible="true" xsi:type="text">
 				<label>Product</label>
 			</parameter>
-			<parameter name="content" sort_order="20" visible="true" xsi:type="textarea">
+			<parameter name="content" sort_order="20" visible="true" xsi:type="text">
 				<label>Content</label>
 			</parameter>
 		</parameters>
