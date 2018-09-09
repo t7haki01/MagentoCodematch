@@ -36,7 +36,7 @@ if ($connection->isTableExists(self::ANSWER_TABLE)) {
                          ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
                          'Answer ID'
                       
-            // build up your DB schema here
+            // build up DB schema here
                    )
                    ->addColumn(
                     'question1',

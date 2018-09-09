@@ -30,11 +30,6 @@ class FormTemplate extends Template
         return $answerCollection->getItems();
     }
 
-    /**
-     * For a given post, returns its url
-     * @param Post $post
-     * @return string
-     */
     public function getAnswerUrl(
         Answer $answer
     ) {
