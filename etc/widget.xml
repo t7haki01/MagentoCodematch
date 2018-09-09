@@ -10,9 +10,8 @@
 			<parameter name="widgetdescription" visible="true" xsi:type="text">
 				<label>Description</label>
 			</parameter>
-			<parameter name="products_count" xsi:type="text" visible="true">
-                <label>Number of Products to Display</label>
-                <value>3</value>
+			<parameter name="border" xsi:type="text" visible="true">
+                <label>Border To Result Table, default or other answer set with border (y/n)?</label>
             </parameter>
 		</parameters>
 		
